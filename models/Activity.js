@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Activity', {
+  var Activity = sequelize.define('Activity', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -24,4 +24,6 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'Activity',
     freezeTableName: true
   });
+
+  return Activity;
 };

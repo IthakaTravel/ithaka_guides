@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Wanderer', {
+  var Wanderer = sequelize.define('Wanderer', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -22,10 +22,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     secure_token: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
   }, {
     tableName: 'Wanderer',
     freezeTableName: true
   });
+
+  Wanderer.beforeCreate(function(wanderer) {
+    var sha1 = require('sha1');
+    wanderer.secure_token = sha1(wanderer.email);
+  })
+
+  return Wanderer;
 };

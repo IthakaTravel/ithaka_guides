@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Wanderer_Preference', {
+  var Wanderer_Preference = sequelize.define('Wanderer_Preference', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -32,4 +32,6 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'Wanderer_Preference',
     freezeTableName: true
   });
+
+  return Wanderer_Preference;
 };

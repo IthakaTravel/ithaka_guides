@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Distance', {
+  var Distance = sequelize.define('Distance', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -32,4 +32,6 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'Distance',
     freezeTableName: true
   });
+
+  return Distance;
 };
