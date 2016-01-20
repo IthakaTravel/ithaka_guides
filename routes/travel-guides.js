@@ -59,4 +59,22 @@ router.post('/action', function(req, res){
   });
 });
 
+router.get('/serve/:secure_token', function(req, res){
+  models.City.findAll()
+    .then(function(cards){
+      return res.json({
+        result:   true,
+        message: 'Here you go!',
+        data:     cards
+      })
+    })
+    .catch(function(error){
+      return res.json({
+        result:   false,
+        message:  'Something went wrong!',
+        data:     error
+      });
+    })
+})
+
 module.exports = router;
