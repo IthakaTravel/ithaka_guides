@@ -23,7 +23,8 @@ module.exports = function(sequelize, DataTypes) {
     secure_token: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      defaultValue: 'null'
     }
   }, {
     tableName: 'Wanderer',
