@@ -13,9 +13,49 @@ router.post('/wanderer/add', function(req, res){
     last_name:  req.body.last_name,
     email:      req.body.email
   }).then(function(wanderer) {
-    return res.json({ result: true, message: 'Wanderer Created', data: wanderer });
+    return res.json({
+      result:   true,
+      message:  'Wanderer Created',
+      data:     wanderer
+    });
   }).catch(function(error) {
-    return res.json({ result: false, message: 'Oh no! something went wrong', data: error })
+    return res.json({
+      result:   false,
+      message: 'Oh no! something went wrong',
+      data:     error
+    })
+  });
+});
+
+router.post('/action', function(req, res){
+  var wanderer_id = null;
+  models.Wanderer.findOne({
+    where: { secure_token: req.body.secure_token }
+  }).then(function(wanderer){
+    wanderer_id = wanderer.ID;
+    models.Wanderer_Preference.create({
+      Wanderer_ID:  wanderer_id,
+      City_ID:      req.body.city_id,
+      is_awesome:   req.body.awesome
+    }).then(function(wanderer) {
+      return res.json({
+        result:   true,
+        message:  'Good to go!',
+        data:     wanderer
+      });
+    }).catch(function(error) {
+      return res.json({
+        result:   false,
+        message:  'Oh no! something went wrong',
+        data:     error
+      });
+    });
+  }).catch(function(error){
+    return res.json({
+      result:   false,
+      message:  'Wanderer not found!',
+      data:     error
+    });
   });
 });
 
