@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  var City_Images = sequelize.define('City_Images', {
+  var City_Image = sequelize.define('City_Image', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -30,5 +30,5 @@ module.exports = function(sequelize, DataTypes) {
     freezeTableName: true
   });
 
-  return City_Images;
+  return City_Image;
 };
