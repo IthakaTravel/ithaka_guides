@@ -1,41 +1,34 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  var City = sequelize.define('City', {
+  var City_Images = sequelize.define('City_Images', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
+    image_url: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false
+    is_cover: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0
     },
-    daily_spend: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false
-    },
-    Country_ID: {
+    City_ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'Country',
+        model: 'City',
         key: 'ID'
       }
     },
-    zone: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
   }, {
-    tableName: 'City',
+    tableName: 'City_Images',
     freezeTableName: true
   });
 
-  return City;
+  return City_Images;
 };

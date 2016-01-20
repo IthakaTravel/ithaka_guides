@@ -1,0 +1,9 @@
+var path = require('path');
+
+
+module.exports = {
+  "env": 'development',
+  "config": "./config/config.json",
+  "migrationsPath": "./migrations",
+  "modelsPath": "./models"
+};
