@@ -1,16 +1,12 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  var Activity = sequelize.define('Activity', {
+  var City_Tag = sequelize.define('City_Tag', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
     },
     City_ID: {
       type: DataTypes.INTEGER(11),
@@ -19,11 +15,19 @@ module.exports = function(sequelize, DataTypes) {
         model: 'City',
         key: 'ID'
       }
+    },
+    Tag_ID: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      references: {
+        model: 'Tag',
+        key: 'ID'
+      }
     }
   }, {
-    tableName: 'Activity',
+    tableName: 'City_Tag',
     freezeTableName: true
   });
 
-  return Activity;
+  return City_Tag;
 };

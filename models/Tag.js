@@ -1,37 +1,29 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  var Distance = sequelize.define('Distance', {
+  var Activity = sequelize.define('Tag', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    City_1_ID: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      references: {
-        model: 'City',
-        key: 'ID'
-      }
-    },
-    City_2_ID: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      references: {
-        model: 'City',
-        key: 'ID'
-      }
-    },
-    meters: {
-      type: DataTypes.INTEGER(11),
+    name: {
+      type: DataTypes.STRING,
       allowNull: false
+    },
+    City_ID: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      references: {
+        model: 'City',
+        key: 'ID'
+      }
     }
   }, {
-    tableName: 'Distance',
+    tableName: 'Tag',
     freezeTableName: true
   });
 
-  return Distance;
+  return Tag;
 };

@@ -31,6 +31,10 @@ module.exports = function(sequelize, DataTypes) {
     zone: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     tableName: 'City',
