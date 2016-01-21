@@ -13,13 +13,15 @@ router.post('/wanderer/add', function(req, res){
     last_name:  req.body.last_name,
     email:      req.body.email
   }).then(function(wanderer) {
-    return res.json({
+    return res.status(201)
+    .json({
       result:   true,
       message:  'Wanderer Created',
       data:     wanderer
     });
   }).catch(function(error) {
-    return res.json({
+    return res.status(400)
+    .json({
       result:   false,
       message: 'Oh no! something went wrong',
       data:     error
@@ -38,20 +40,23 @@ router.post('/action', function(req, res){
       City_ID:      req.body.city_id,
       is_awesome:   req.body.awesome
     }).then(function(wanderer) {
-      return res.json({
+      return res.status(400)
+      .json({
         result:   true,
         message:  'Good to go!',
         data:     wanderer
       });
     }).catch(function(error) {
-      return res.json({
+      return res.status(400)
+      .json({
         result:   false,
         message:  'Oh no! something went wrong',
         data:     error
       });
     });
   }).catch(function(error){
-    return res.json({
+    return res.status(404)
+    .json({
       result:   false,
       message:  'Wanderer not found!',
       data:     error
@@ -69,7 +74,8 @@ router.get('/serve/:secure_token', function(req, res){
       })
     })
     .catch(function(error){
-      return res.json({
+      return res.status(400)
+      .json({
         result:   false,
         message:  'Something went wrong!',
         data:     error
