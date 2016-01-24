@@ -18,7 +18,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     tableName: 'Country',
-    freezeTableName: true
+    freezeTableName: true,
+    classMethods: {
+      associate: function(models) {
+        Country.hasMany(models.City)
+      }
+    }
   });
 
   return Country;

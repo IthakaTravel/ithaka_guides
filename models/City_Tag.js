@@ -23,6 +23,11 @@ module.exports = function(sequelize, DataTypes) {
         model: 'Tag',
         key: 'ID'
       }
+    },
+    is_starred: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   }, {
     tableName: 'City_Tag',

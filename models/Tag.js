@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  var Activity = sequelize.define('Tag', {
+  var Tag = sequelize.define('Tag', {
     ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -11,14 +11,6 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    City_ID: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      references: {
-        model: 'City',
-        key: 'ID'
-      }
     },
     is_starred: {
       type: DataTypes.BOOLEAN,
