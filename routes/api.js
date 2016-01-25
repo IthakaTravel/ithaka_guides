@@ -56,7 +56,7 @@ router.post('/action', function (req, res) {
   models.City.findOne({ where: { id: cityId } })
   .then(function (city) {
     if (!city)
-      return res.status(400).json({ result: false, message: "Invalid city id" });
+      throw { status: 400, message: "Invalid city id" };
     c = city;
     return models.Wanderer.findOne({ where: { secretToken: secretToken } });
   })
@@ -67,6 +67,8 @@ router.post('/action', function (req, res) {
     return res.status(201).json({ result: true, message: "Recorded wanderer preference" });
   })
   .catch(function (error) {
+    if (error.status && error.message)
+      return res.status(error.status).json({ result: false, message: error.message });
     return res.status(500).json({ result: false, message: "Internal server error" });
   });
 });
